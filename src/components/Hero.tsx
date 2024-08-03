@@ -1,24 +1,26 @@
+"use client"
 import React from "react";
 import Image from "next/image";
+import { Button } from "./ui/button";
 const Hero = () => {
     return (
-        <section className="bg-white mt-20">
+        <section className="mt-20">
     <div className="lg:flex">
         <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
             <div className="max-w-xl">
-                <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Build Your New <span className="text-blue-600 dark:text-blue-400">Idea</span></h2>
+                <h2 className="text-3xl font-semibold lg:text-4xl">Take Control of Your <span className="text-blue-600 ">Finances</span></h2>
 
-                <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi cum cupiditate ducimus, fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates.</p>
+                <p className="mt-4 text-sm text-gray-500 lg:text-base">Easily manage expenses, stay on budget, and achieve your financial goals with our user-friendly app.</p>
 
-                <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
-                    <a href="#" className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700">Get Started</a>
-                    <a href="#" className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md lg:mx-4 hover:bg-gray-300">Learn More</a>
+                <div className="flex gap-5 flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
+                   <Button className="bg-gray-900 text-white hover:bg-gray-700">Get Started</Button>
+                    <Button>Learn More</Button>
                 </div>
             </div>
         </div>
 
-        <div className="w-full border-2 border-red-500 lg:w-1/2 h-auto">
-            <Image src="/finance.png" alt="Finance"   width={0} height={0} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: "cover" }}/>    
+        <div className="w-full lg:w-1/2 h-auto">
+            <Image src="/finance.png" alt="Finance"   width={0} height={0} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: "cover" }} priority={true}/>    
         </div>
     </div>
 </section>
