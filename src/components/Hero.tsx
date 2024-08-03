@@ -8,7 +8,7 @@ const Hero = () => {
     <div className="lg:flex">
         <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
             <div className="max-w-xl">
-                <h2 className="text-3xl font-semibold lg:text-4xl">Take Control of Your <span className="text-blue-600 ">Finances</span></h2>
+                <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Take Control of Your <span className="text-green-500 ">Finances</span></h1>
 
                 <p className="mt-4 text-sm text-gray-500 lg:text-base">Easily manage expenses, stay on budget, and achieve your financial goals with our user-friendly app.</p>
 

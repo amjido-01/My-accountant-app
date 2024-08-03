@@ -6,37 +6,37 @@ import { BookOpen } from 'lucide-react'
 const ProjectsData = [
   {
     id: 1,
-    name: 'syntaxUI',
-    description: 'Ready-to-use UI elements designed for rapid development.',
+    name: 'Expense Tracking',
+    description: 'Easily add and categorize your expenses.',
     link: 'https://syntaxui.com',
     image: BookOpen,
   },
   {
     id: 2,
-    name: 'Prettyfolio',
-    description: 'A curated collection of portfolios for inspiration.',
+    name: 'Budget Management',
+    description: 'Set and track your budgets with ease.',
     link: 'https://prettyfolio.com',
     image: BookOpen,
   },
   {
     id: 2,
-    name: 'Enchant',
-    description: 'A vibrant theme for Visual Studio Code.',
+    name: 'Reports and Analytics',
+    description: 'Gain insights with detailed reports and visual charts.',
     link: 'https://enchant.ansubkhan.com',
     image: BookOpen,
   },
   {
     id: 3,
-    name: 'Ansubkhan.com',
-    description: 'My personal website, blogs and newsletter.',
+    name: 'Secure Authentication',
+    description: 'Securely log in with OAuth providers like Google.',
     link: 'https://ansubkhan.com',
     image: BookOpen,
   },
   {
     id: 4,
-    name: 'Quote Vault',
-    description: 'Social media, but for sharing quotes.',
-    link: 'https://quote-vault.vercel.app',
+    name: 'Reports and Analytics',
+    description: 'Gain insights with detailed reports and visual charts.',
+    link: 'https://enchant.ansubkhan.com',
     image: BookOpen,
   },
 ]
@@ -56,7 +56,7 @@ const HoverSpring = () => {
                 bounce: 0.7,
               }}
               key={project.id}
-              className="mt-5 text-left"
+              className="mt-5 text-left border-2 p-4 rounded-md"
             >
               <a target="_blank" rel="noopener noreferrer" href={project.link}>
                 <Image
