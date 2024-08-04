@@ -13,8 +13,8 @@ const Hero = () => {
                 <p className="mt-4 text-sm text-gray-500 lg:text-base">Easily manage expenses, stay on budget, and achieve your financial goals with our user-friendly app.</p>
 
                 <div className="flex gap-5 flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
-                   <Button className="bg-gray-900 text-white hover:bg-gray-700">Get Started</Button>
-                    <Button>Learn More</Button>
+                   <Button className="bg-gray-900 border-2 border-green-500 text-white hover:bg-gray-700">Get Started</Button>
+                    <Button className="bg-green-500 text-white hover:bg-green-700">Learn More</Button>
                 </div>
             </div>
         </div>

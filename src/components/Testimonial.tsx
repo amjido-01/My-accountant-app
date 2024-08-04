@@ -78,7 +78,7 @@ type TestimonialProps = {
 }
 const Testimonial: React.FC<TestimonialProps> = ({direction}) => {
   return (
-    <div className='mt-20 border-2 flex flex-col gap-4'>
+    <div className='mt-20 flex flex-col gap-4'>
         <div>
         <Marquee className='' direction="right" pauseOnHover={true} speed={40}>
             {TestimonyData.map((testimony) => {

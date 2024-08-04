@@ -5,6 +5,7 @@ import AnimatedLogoCloud from "@/components/AnimatedLogoCloud";
 import HoverSpring from "@/components/HoverSpring";
 import Works from "@/components/Works";
 import CTA from "@/components/CTA";
+import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="">
@@ -15,6 +16,7 @@ export default function Home() {
       <Works />
       <Testimonial direction="left" />
       <CTA />
+      <Footer />
     </main>
   );
 }
