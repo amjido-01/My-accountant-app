@@ -1,12 +1,48 @@
-"use client"
+'use client'
 import React from 'react'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import Link from 'next/link';
+// import { useActionState } from 'react';
+// import { authenticate } from '@/lib/actions';
+import { useState } from 'react';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { z } from 'zod';
 
+const signInSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6)
+});
+
+type SignInForm = z.infer<typeof signInSchema>;
 
 const page = () => {
+    // const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+            signInSchema.parse({email, password});
+            const res = await signIn("credentials", {email, password, callbackUrl: "/dashboard"});
+            if (res?.error) {
+                setError(res.error);
+            }
+        } catch (error) {
+            if (error instanceof z.ZodError) {
+                setError(error.errors[0].message);
+        } else {
+            setError('An error occurred');
+        }
+    }
+}
+
   return (
         <div className="">
 
@@ -37,7 +73,7 @@ const page = () => {
             <span className="w-5/6 px-4 py-3 font-bold text-center">Sign in with Google</span>
         </a>
 
-        <div className="flex items-center justify-between mt-4 md:mt-20">
+        <div className="flex border-2 border-red-500 items-center justify-between mt-4 md:mt-20">
             <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
 
             <a href="#" className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">or login
@@ -46,9 +82,10 @@ const page = () => {
             <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
         </div>
 
+        <form onSubmit={handleSubmit}>
         <div className="mt-4">
             <Label className='block mb-2 text-sm font-medium' htmlFor="email">Email Address</Label>
-            <Input className='block w-full px-4 py-2' id='email' type='text' />
+            <Input value={email} onChange={(e) => setEmail(e.target.value)} className='block w-full px-4 py-2' id='email' type='text' />
         </div>
 
         <div className="mt-4">
@@ -57,21 +94,23 @@ const page = () => {
                 <a href="#" className="text-xs">Forget Password?</a>
                 <Label className='block mb-2 text-sm font-medium' htmlFor="password">Password?</Label>
             </div>
-            <Input id='password' type='password' className='block w-full px-4 py-2' />
+            <Input value={password} onChange={(e) => setPassword(e.target.value)} id='password' type='password' className='block w-full px-4 py-2' />
         </div>
-
+        {error && <p className="text-red-500 text-sm">{error}</p>}
         <div className="mt-6">
-          
+        {/* {error && <p>{error}</p>} */}
             <Button type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide capitalize transition-colors duration-300 transform rounded-lg focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 bg-green-500 text-white hover:bg-green-600"> Sign In </Button>
         </div>
 
         <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 
-            <a href="#" className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign up</a>
+            <Link href="/signup" className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign up</Link>
 
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
         </div>
+        </form>
+        
 
         {/* <div className="flex items-center w-full border-2 max-w-md px-6 mx-auto lg:w-2/6">
             <div className="flex-1">

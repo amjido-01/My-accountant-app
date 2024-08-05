@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SessionProvider } from "next-auth/react";
+import type { AppProps } from "next/app";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,20 +14,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  session,
 }: Readonly<{
   children: React.ReactNode;
+  session?: any; // You might want to replace `any` with the correct type for session
 }>) {
   return (
     <html suppressHydrationWarning={true} lang="en">
       <body suppressHydrationWarning={true} className={inter.className}>
-      <ThemeProvider
-       attribute="class"
-       defaultTheme="system"
-       enableSystem
-       disableTransitionOnChange
-      >
-        {children}
-      </ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SessionProvider session={session}>
+            {children}
+          </SessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
