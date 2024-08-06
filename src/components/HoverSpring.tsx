@@ -1,14 +1,16 @@
 "use client"
+import React, { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { BookOpen } from 'lucide-react'
+import { BookOpen, ChartNoAxesCombined, FolderKanban, ChartColumn, Shield } from 'lucide-react'
+
 
 interface ProjectsData {
   id: number;
   name: string;
   description: string;
   link: string;
-  icon: JSX.Element;
+  icon: any;
 }
 
 const iconSize = 18;
@@ -19,41 +21,41 @@ const ProjectsData = [
     name: 'Expense Tracking',
     description: 'Easily add and categorize your expenses.',
     link: 'https://syntaxui.com',
-    icon: <BookOpen size={iconSize} />,
+    icon: <ChartNoAxesCombined size={iconSize} />,
   },
   {
     id: 2,
     name: 'Budget Management',
     description: 'Set and track your budgets with ease.',
     link: 'https://prettyfolio.com',
-    icon: BookOpen,
+    icon: <FolderKanban size={iconSize}/>,
   },
   {
     id: 2,
     name: 'Reports and Analytics',
     description: 'Gain insights with detailed reports and visual charts.',
     link: 'https://enchant.ansubkhan.com',
-    icon: BookOpen,
+    icon: <ChartColumn size={iconSize}/>,
   },
   {
     id: 3,
     name: 'Secure Authentication',
     description: 'Securely log in with OAuth providers like Google.',
     link: 'https://ansubkhan.com',
-    icon: BookOpen,
+    icon: <Shield size={iconSize}/>,
   },
   {
     id: 4,
     name: 'Reports and Analytics',
     description: 'Gain insights with detailed reports and visual charts.',
     link: 'https://enchant.ansubkhan.com',
-    icon: <BookOpen />,
+    icon: <BookOpen size={iconSize} />,
   },
 ]
 
 const HoverSpring = () => {
   return (
-    <div className='container border-2 mt-20'>
+    <div className='container mt-[7rem]'>
       <h2 className='scroll-m-20 text-3xl text-center font-extrabold tracking-tight lg:text-4xl'>Features</h2>
       <div className="container grid w-full grid-cols-2 gap-x-10 md:grid-cols-3">
         {ProjectsData.map((project) => {
@@ -70,13 +72,9 @@ const HoverSpring = () => {
               className="mt-5 text-left border-2 p-4 rounded-md"
             >
               <a target="_blank" rel="noopener noreferrer" href={project.link}>
-                <Image
-                  src={project.icon}
-                  width={30}
-                  height={30}
-                  className="mb-3 rounded-lg border-gray-400 dark:border"
-                  alt={project.name}
-                />
+              <div className="mb-2 w-fit rounded-lg bg-green-500 p-1 text-center text-white ">
+                {project.icon}
+              </div>
                 <div className="mb-1 text-sm font-medium text-gray-900 dark:text-gray-100">
                   {project.name}
                 </div>
