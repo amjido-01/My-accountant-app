@@ -37,13 +37,13 @@ export  default NextAuth({
           const isValid = await bcrypt.compare(password, user.password || '');
 
           if (!isValid) {
-            throw new Error('Invalid password');
+            return null;
           }
 
           return { id: user.id.toString(), email: user.email };
         } catch (error) {
           if (error instanceof z.ZodError) {
-            throw new Error('Validation error');
+            return null;
           }
           throw error;
         }
@@ -68,5 +68,7 @@ export  default NextAuth({
     },
   },
 });
+
+
 
 // export  { handlers as GET, auth as POST };
